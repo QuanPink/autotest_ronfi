@@ -31,7 +31,6 @@ public class LoginTest extends Setup {
     @Test
     public void login() throws InterruptedException {
         utils.getTitle();
-        utils.setThread();
         utils.waitClick(login.connectWallet);
         utils.setThread();
         Assert.assertTrue(login.btnUserAccount.isDisplayed());

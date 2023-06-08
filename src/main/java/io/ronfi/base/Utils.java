@@ -48,8 +48,12 @@ public class Utils {
         System.out.println(driver.getTitle());
     }
 
-    public boolean checkEnable(WebElement element){
+    public boolean checkEnable(WebElement element) {
         return wait.until(ExpectedConditions.visibilityOf(element)).isEnabled();
+    }
+
+    public void waitLoadPage() {
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
     }
 
     public void waitSwitchToWindow() {
