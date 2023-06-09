@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.awt.*;
 import java.time.Duration;
@@ -40,8 +41,11 @@ public class Utils {
         actions.sendKeys(action, value).sendKeys(Keys.ENTER).build().perform();
     }
 
-    public String waitGetText(WebElement element) {
-        return wait.until(ExpectedConditions.visibilityOf(element)).getText();
+    public void waitGetTextAndCompare(WebElement element, String value) {
+        WebElement input = wait.until(ExpectedConditions.visibilityOf(element));
+        input.sendKeys(value);
+        String inputText = input.getAttribute("value");
+        Assert.assertEquals(inputText, value.trim());
     }
 
     public void getTitle() {
