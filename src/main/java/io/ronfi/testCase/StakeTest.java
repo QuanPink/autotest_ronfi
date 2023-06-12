@@ -32,5 +32,6 @@ public class StakeTest extends Setup {
         utils.waitSenKey(stake.inputToken, "0.01");
         Assert.assertFalse(utils.checkDisplayed(stake.all, "Minimum amount is 0.01 RON"));
         Assert.assertTrue(utils.checkEnable(stake.btnStake));
+        utils.setThread();
     }
 }
