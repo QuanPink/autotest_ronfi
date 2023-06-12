@@ -1,5 +1,6 @@
 package io.ronfi.base;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -42,10 +43,22 @@ public class Utils {
     }
 
     public void waitGetTextAndCompare(WebElement element, String value) {
-        WebElement input = wait.until(ExpectedConditions.visibilityOf(element));
-        input.sendKeys(value);
-        String inputText = input.getAttribute("value");
+        WebElement textInput = wait.until(ExpectedConditions.visibilityOf(element));
+        textInput.sendKeys(value);
+        String inputText = textInput.getAttribute("value");
         Assert.assertEquals(inputText, value.trim());
+    }
+
+    public void clearData(WebElement element) {
+        element.clear();
+    }
+
+    public void sendSpecialCharacter(WebElement element, String value) {
+        WebElement inputCharacter = wait.until(ExpectedConditions.visibilityOf(element));
+        inputCharacter.clear();
+        inputCharacter.sendKeys(value);
+        String character = inputCharacter.getAttribute("value");
+        Assert.assertEquals(character, "");
     }
 
     public void getTitle() {
@@ -54,6 +67,10 @@ public class Utils {
 
     public boolean checkEnable(WebElement element) {
         return wait.until(ExpectedConditions.visibilityOf(element)).isEnabled();
+    }
+
+    public boolean checkDisplayed(By element) {
+        return driver.findElement(element).isDisplayed();
     }
 
     public void waitLoadPage() {

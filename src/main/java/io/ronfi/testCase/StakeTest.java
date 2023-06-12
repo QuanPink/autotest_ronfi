@@ -4,6 +4,7 @@ import io.ronfi.base.Setup;
 import io.ronfi.base.Utils;
 import io.ronfi.page.StakePage;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class StakeTest extends Setup {
@@ -18,9 +19,16 @@ public class StakeTest extends Setup {
     }
 
     @Test
-    public void stake() {
-        driver.navigate().to("https://testnet.ronfi.io/stake");
-//        Assert.assertFalse(utils.checkEnable(stake.btnStake));
-        utils.waitGetTextAndCompare(stake.inputToken, "1");
+    public void stake() throws InterruptedException {
+        Assert.assertFalse(utils.checkEnable(stake.btnStake));
+        utils.waitGetTextAndCompare(stake.inputToken, "    1");
+        utils.sendSpecialCharacter(stake.inputToken, "!@#$%^&");
+        utils.sendSpecialCharacter(stake.inputToken, "quan");
+        utils.waitSenKey(stake.inputToken, "0.009");
+        Assert.assertTrue(utils.checkEnable(stake.messageInputToken));
+        Assert.assertFalse(utils.checkEnable(stake.btnStake));
+        utils.clearData(stake.inputToken);
+        utils.waitSenKey(stake.inputToken, "0.01");
+        Assert.assertTrue(utils.checkEnable(stake.btnStake));
     }
 }

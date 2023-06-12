@@ -6,9 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
-    @FindBy(xpath = "//div[@class='base__Box-sc-18gtznx-1 hfhsDi']//button[@class='Buttons__Button-sc-1jc3gkb-0 dSLUnp'][normalize-space()='Connect Wallet']")
+    @FindBy(xpath = "(//button[contains(text(), 'Connect Wallet')])[2]")
     public WebElement connectWallet;
-    @FindBy(xpath = "//div[@class='base__Box-sc-18gtznx-1 base__Flex-sc-18gtznx-2 bOpaAK bjlZRc']")
+    @FindBy(xpath = "(//div[contains(text(), 'ronin:4E4...e9e')])[2]")
     public WebElement btnUserAccount;
     @FindBy(xpath = "//a[text() = 'Stake RON']")
     public WebElement switchToScreenStake;

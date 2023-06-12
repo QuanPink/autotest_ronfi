@@ -53,7 +53,7 @@ public class ExtensionMetamask extends Setup {
         utils.waitSwitchToWindow();
         utils.waitClick(btnConfirmImport);
         utils.waitClick(btnAllow);
-        utils.waitSenKey(inputKeys, "enter kite entire between expose enrich dirt tobacco news ceiling combine caught");
+        utils.waitSenKey(inputKeys, "hat blossom online runway wrist father cash pumpkin float kit angle jump");
         utils.waitSenKey(inputPass, "123123123");
         utils.waitSenKey(inputPassConfirm, "123123123");
         utils.waitClick(btnImportWallet);
