@@ -69,8 +69,9 @@ public class Utils {
         return wait.until(ExpectedConditions.visibilityOf(element)).isEnabled();
     }
 
-    public boolean checkDisplayed(By element) {
-        return driver.findElement(element).isDisplayed();
+    public boolean checkDisplayed(WebElement element, String value) {
+        String pageText = wait.until(ExpectedConditions.visibilityOf(element)).getText();
+        return pageText.contains(value);
     }
 
     public void waitLoadPage() {

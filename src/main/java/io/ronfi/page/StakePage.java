@@ -1,11 +1,15 @@
 package io.ronfi.page;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class StakePage {
+
+    @FindBy(xpath = "//div[@class='base__Box-sc-18gtznx-1 dGiMQM']")
+    public WebElement all;
     @FindBy(xpath = "//button[normalize-space()='Stake']")
     public WebElement btnStake;
     @FindBy(xpath = "//input[@placeholder='0.00']")

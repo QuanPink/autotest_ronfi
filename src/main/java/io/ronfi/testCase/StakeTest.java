@@ -21,6 +21,7 @@ public class StakeTest extends Setup {
     @Test
     public void stake() throws InterruptedException {
         Assert.assertFalse(utils.checkEnable(stake.btnStake));
+        utils.setThread();
         utils.waitGetTextAndCompare(stake.inputToken, "    1");
         utils.sendSpecialCharacter(stake.inputToken, "!@#$%^&");
         utils.sendSpecialCharacter(stake.inputToken, "quan");
@@ -29,6 +30,7 @@ public class StakeTest extends Setup {
         Assert.assertFalse(utils.checkEnable(stake.btnStake));
         utils.clearData(stake.inputToken);
         utils.waitSenKey(stake.inputToken, "0.01");
+        Assert.assertFalse(utils.checkDisplayed(stake.all, "Minimum amount is 0.01 RON"));
         Assert.assertTrue(utils.checkEnable(stake.btnStake));
     }
 }
