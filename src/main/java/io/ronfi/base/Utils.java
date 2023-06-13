@@ -1,23 +1,19 @@
 package io.ronfi.base;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
-import java.awt.*;
 import java.time.Duration;
 
 public class Utils {
     private final WebDriver driver;
     private final WebDriverWait wait;
     private final Actions actions;
-
-    private static final int WAIT_TIMEOUT_SECONDS = 10;
+    private static final int WAIT_TIMEOUT_SECONDS = 30;
 
     public Utils(WebDriver driver) {
         this.driver = driver;
@@ -26,7 +22,15 @@ public class Utils {
     }
 
     public void setThread() throws InterruptedException {
-        Thread.sleep(2000);
+        Thread.sleep(3000);
+    }
+
+    public void waitLoadPage() {
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
+    }
+
+    public void getTitle() {
+        System.out.println(driver.getTitle());
     }
 
     public void waitSenKey(WebElement element, String value) {
@@ -42,27 +46,19 @@ public class Utils {
         actions.sendKeys(action, value).sendKeys(Keys.ENTER).build().perform();
     }
 
-    public void waitGetTextAndCompare(WebElement element, String value) {
-        WebElement textInput = wait.until(ExpectedConditions.visibilityOf(element));
-        textInput.sendKeys(value);
-        String inputText = textInput.getAttribute("value");
-        Assert.assertEquals(inputText, value.trim());
+    public boolean checkTrimSpace(WebElement element) {
+        String text = element.getAttribute("value");
+        String trimmedText = text.trim();
+        return text.equals(trimmedText);
+    }
+
+    public boolean checkTrimAll(WebElement element) {
+        String text = element.getAttribute("value");
+        return text.isEmpty();
     }
 
     public void clearData(WebElement element) {
         element.clear();
-    }
-
-    public void sendSpecialCharacter(WebElement element, String value) {
-        WebElement inputCharacter = wait.until(ExpectedConditions.visibilityOf(element));
-        inputCharacter.clear();
-        inputCharacter.sendKeys(value);
-        String character = inputCharacter.getAttribute("value");
-        Assert.assertEquals(character, "");
-    }
-
-    public void getTitle() {
-        System.out.println(driver.getTitle());
     }
 
     public boolean checkEnable(WebElement element) {
@@ -74,21 +70,27 @@ public class Utils {
         return pageText.contains(value);
     }
 
-    public void waitLoadPage() {
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
+    public void validate(WebElement element, WebElement element1) {
+        String allToken = wait.until(ExpectedConditions.visibilityOf(element)).getText();
+        WebElement inputC = wait.until(ExpectedConditions.visibilityOf(element1));
+        inputC.clear();
+        double numericValue = Double.parseDouble(allToken);
+        double subtractedValue = numericValue - 0.001;
+        String newValue = String.valueOf(subtractedValue);
+        inputC.sendKeys(newValue);
     }
 
-    public void waitSwitchToWindow() {
-        int screenCount = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices().length;
-        if (screenCount == 1) {
-            wait.until(ExpectedConditions.numberOfWindowsToBe(2));
-            for (String windowHandle : driver.getWindowHandles()) {
-                driver.switchTo().window(windowHandle);
-            }
-        } else {
-            for (String windowHandle : driver.getWindowHandles()) {
-                driver.switchTo().window(windowHandle);
-            }
+    public void switchToNewWindow(int value) {
+        wait.until(ExpectedConditions.numberOfWindowsToBe(value));
+        for (String windowHandle : driver.getWindowHandles()) {
+            driver.switchTo().window(windowHandle);
+        }
+    }
+
+    public void switchToOriginalWindow(int value) {
+        wait.until(ExpectedConditions.numberOfWindowsToBe(value));
+        for (String windowHandle : driver.getWindowHandles()) {
+            driver.switchTo().window(windowHandle);
         }
     }
 }
