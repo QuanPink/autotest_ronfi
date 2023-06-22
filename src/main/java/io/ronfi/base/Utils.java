@@ -93,4 +93,8 @@ public class Utils {
             driver.switchTo().window(windowHandle);
         }
     }
+
+//    public void checkElement(boolean element) {
+//        Assert.assertFalse(element);
+//    }
 }
