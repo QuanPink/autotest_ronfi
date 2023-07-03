@@ -73,7 +73,6 @@ public class Utils {
     public void validate(WebElement element, WebElement element1) {
         String allToken = wait.until(ExpectedConditions.visibilityOf(element)).getText();
         WebElement inputC = wait.until(ExpectedConditions.visibilityOf(element1));
-        inputC.clear();
         double numericValue = Double.parseDouble(allToken);
         double subtractedValue = numericValue - 0.001;
         String newValue = String.valueOf(subtractedValue);
@@ -93,8 +92,4 @@ public class Utils {
             driver.switchTo().window(windowHandle);
         }
     }
-
-//    public void checkElement(boolean element) {
-//        Assert.assertFalse(element);
-//    }
 }
