@@ -21,7 +21,7 @@ public class LoginTest extends Setup {
     }
 
     @BeforeSuite
-    public void setupExtension() throws InterruptedException {
+    public void setupExtension() {
         setupExtension = new ExtensionMetamask();
         setupExtension.setupMetamask();
         utils = new Utils(driver);

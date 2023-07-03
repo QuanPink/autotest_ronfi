@@ -47,7 +47,7 @@ public class ExtensionMetamask extends Setup {
         utils = new Utils(driver);
     }
 
-    public void setupMetamask() throws InterruptedException {
+    public void setupMetamask() {
         driver.get("chrome-extension://fnjhmkhhmkbjkkabndcnnogagogbneec/popup.html#/unlock");
         utils.waitClick(btnGetStarted);
         utils.switchToNewWindow(2);

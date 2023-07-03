@@ -15,9 +15,6 @@ public class StakePage {
     public WebElement inputToken;
     @FindBy(xpath = "//div[contains(text(), 'Minimum amount is 0.01 RON')]")
     public WebElement messageInputToken;
-    @FindBy(xpath = "//span[@class=\"base__Box-sc-18gtznx-1 kUsDBq\"]")
-    public WebElement numberToken;
-
 
     public StakePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
