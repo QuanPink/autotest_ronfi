@@ -79,14 +79,7 @@ public class Utils {
         inputC.sendKeys(newValue);
     }
 
-    public void switchToNewWindow(int value) {
-        wait.until(ExpectedConditions.numberOfWindowsToBe(value));
-        for (String windowHandle : driver.getWindowHandles()) {
-            driver.switchTo().window(windowHandle);
-        }
-    }
-
-    public void switchToOriginalWindow(int value) {
+    public void switchToWindow(int value) {
         wait.until(ExpectedConditions.numberOfWindowsToBe(value));
         for (String windowHandle : driver.getWindowHandles()) {
             driver.switchTo().window(windowHandle);

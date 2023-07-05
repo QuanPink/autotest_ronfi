@@ -41,11 +41,11 @@ public class StakeTest extends Setup {
         Assert.assertFalse(utils.checkDisplayed(stake.allPage, "Minimum amount is 0.01 RON"));
         Assert.assertTrue(utils.checkEnable(stake.btnStake));
         utils.waitClick(stake.btnStake);
-        utils.switchToNewWindow(2);
+        utils.switchToWindow(2);
         utils.waitClick(metamaskPage.cancel);
-        utils.switchToOriginalWindow(1);
+        utils.switchToWindow(1);
         utils.waitClick(stake.btnStake);
-        utils.switchToNewWindow(2);
+        utils.switchToWindow(2);
         utils.waitClick(metamaskPage.confirm);
     }
 }

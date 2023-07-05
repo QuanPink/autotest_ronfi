@@ -50,7 +50,7 @@ public class ExtensionMetamask extends Setup {
     public void setupMetamask() {
         driver.get("chrome-extension://fnjhmkhhmkbjkkabndcnnogagogbneec/popup.html#/unlock");
         utils.waitClick(btnGetStarted);
-        utils.switchToNewWindow(2);
+        utils.switchToWindow(2);
         utils.waitClick(btnConfirmImport);
         utils.waitClick(btnAllow);
         utils.waitSenKey(inputKeys, "hat blossom online runway wrist father cash pumpkin float kit angle jump");
@@ -58,7 +58,7 @@ public class ExtensionMetamask extends Setup {
         utils.waitSenKey(inputPassConfirm, "123123123");
         utils.waitClick(btnImportWallet);
         driver.close();
-        utils.switchToOriginalWindow(1);
+        utils.switchToWindow(1);
         driver.navigate().refresh();
         utils.waitAction(input, "123123123");
         utils.waitClick(menu);
