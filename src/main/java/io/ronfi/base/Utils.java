@@ -25,10 +25,6 @@ public class Utils {
         Thread.sleep(3000);
     }
 
-    public void waitLoadPage() {
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
-    }
-
     public void getTitle() {
         System.out.println(driver.getTitle());
     }
@@ -85,12 +81,4 @@ public class Utils {
             driver.switchTo().window(windowHandle);
         }
     }
-    /* Viết 1 hàm switch window.
-    1: lấy toàn bộ màn hình hiện tại
-    2: Lưu mà hình đầu tiên vào biến.
-    3: Check điều kiện:
-        Nếu screen now khác screen first thì switch về screen first.
-        Nếu = nhau thì switch next screen. */
-
-
 }
